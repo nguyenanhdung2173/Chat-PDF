@@ -6,12 +6,6 @@ from google.genai import types
 GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 MODEL_NAME = st.secrets["MODEL_NAME"]
 
-generation_config = {
-    "temperature": 0.05,
-    "top_p": 1,
-    "top_k": 1,
-    "max_output_tokens": 1000,
-}
 
 custom_prompt_template = """
 Yêu cầu cụ thể là tổng hợp thông tin trong các đoạn Context để trả lời câu hỏi. 
