@@ -1,0 +1,4 @@
+# ignore from push
+.env
+PDFs/
+__pycache__/
