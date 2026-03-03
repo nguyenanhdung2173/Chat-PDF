@@ -1,7 +1,7 @@
 from google import genai
 import streamlit as st
 from langchain_core.prompts import PromptTemplate
-
+from google.genai import types
 # ===== LẤY SECRETS =====
 GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 MODEL_NAME = st.secrets["MODEL_NAME"]
@@ -54,9 +54,14 @@ class GeminiBot:
 
     def response(self, user_input):
         response = self.client.models.generate_content(
-            model=MODEL_NAME,  # ví dụ: gemini-1.5-flash
+            model=MODEL_NAME,
             contents=user_input,
-            config=generation_config
+            config=types.GenerateContentConfig(
+                temperature=0.05,
+                top_p=1,
+                top_k=1,
+                max_output_tokens=1000,
+            )
         )
         return response.text
 
